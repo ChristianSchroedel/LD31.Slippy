@@ -180,11 +180,6 @@ public class Controls implements KeyListener
 	@Override
 	public void keyPressed(KeyEvent e)
 	{
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e)
-	{
 		int code = e.getKeyCode();
 
 		if (Game.state == Game.GAME_STARTING)
@@ -202,6 +197,11 @@ public class Controls implements KeyListener
 			code == KeyEvent.VK_ESCAPE ||
 			code == KeyEvent.VK_P)
 			keyEvents.add(code);
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e)
+	{
 	}
 
 	@Override

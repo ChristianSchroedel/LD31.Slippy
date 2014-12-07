@@ -29,11 +29,11 @@ public class Game implements
 	private static final int BONUS_POINTS_MUL = 3000;
 	private static final int MALUS_POINTS_MUL = -3000;
 
-	private static final int INIT_WINDOW_WIDTH = 1200;
-	private static final int INIT_WINDOW_HEIGHT = 800;
+	private static final int INIT_WINDOW_WIDTH = 900;
+	private static final int INIT_WINDOW_HEIGHT = 600;
 
-	private static final int NUM_COLLECTABLES = 7;
-	private static final int NUM_OBSTACLES = 7;
+	private static final int NUM_COLLECTABLES = 6;
+	private static final int NUM_OBSTACLES = 6;
 
 	private static final int FPS = 60;
 	private static final long OPTIMAL_TIME = 1000000000 / FPS;
