@@ -2,11 +2,19 @@ package de.schroedel.slippy.entities;
 
 import de.schroedel.slippy.entities.Entity;
 
-import javax.swing.ImageIcon;
-
+import java.io.IOException;
+import java.net.URL;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.List;
+
+import javax.swing.ImageIcon;
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.SourceDataLine;
 
 
 public class Player extends Entity
@@ -108,12 +116,96 @@ public class Player extends Entity
 	{
 		icon = icons.get(ICON_HAPPY);
 		state = STATE_HAPPY;
+
+		new Thread()
+		{
+			@Override
+			public void run()
+			{
+				playSound(getClass().getResource("/Collect_good.wav"));
+			}
+		}.start();
 	}
 
 	public void sad()
 	{
 		icon = icons.get(ICON_SAD);
 		state = STATE_SAD;
+
+		new Thread()
+		{
+			@Override
+			public void run()
+			{
+				playSound(getClass().getResource("/Collect_bad.wav"));
+			}
+		}.start();
+	}
+
+	public void playSound(URL sound)
+	{
+		AudioInputStream stream;
+
+		try
+		{
+			stream = AudioSystem.getAudioInputStream(sound);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			return;
+		}
+
+		SourceDataLine sourceLine = null;
+		AudioFormat audioFormat = stream.getFormat();
+
+		DataLine.Info info = new DataLine.Info(
+			SourceDataLine.class,
+			audioFormat);
+
+		try
+		{
+			sourceLine = (SourceDataLine) AudioSystem.getLine(info);
+			sourceLine.open(audioFormat);
+		}
+		catch (LineUnavailableException e)
+		{
+			e.printStackTrace();
+			System.exit(1);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			System.exit(1);
+		}
+
+		if (sourceLine == null)
+			return;
+
+		sourceLine.start();
+
+		int nBytesRead = 0;
+		byte[] abData = new byte[128000];
+
+		while (nBytesRead != -1)
+		{
+			try
+			{
+				nBytesRead = stream.read(abData, 0, abData.length);
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}
+			if (nBytesRead >= 0)
+			{
+				@SuppressWarnings("unused")
+				int nBytesWritten = sourceLine.write(abData, 0, nBytesRead);
+			}
+		}
+
+		sourceLine.drain();
+		sourceLine.close();
 	}
 
 	public void moveUp()

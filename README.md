@@ -2,7 +2,7 @@
 
 Entry for LudumDare 31 (my first LudumDare)
 
-![Alt text](/Slippy.png?raw=true "Title screen")
+![Alt text](/res/Slippy.png?raw=true "Title screen")
 
 # Let's eat!
 ### The small penguin named Slippy is hungry!
