@@ -1,6 +1,8 @@
 # Slippy - The hungry penguin
 
-Entry for LudumDare 31 (my first LudumDare)
+Entry for [LudumDare 31] (my first LudumDare)
+
+Download the jar-File from here [Slippy][2].
 
 ![Alt text](/res/Slippy.png?raw=true "Title screen")
 
@@ -25,3 +27,20 @@ You will make Slippy sad and lose some points ...
 
 ![Alt text](/src/assets/bad_1.png?raw=true "Bad")
 ![Alt text](/src/assets/penguin_sad.png?raw=true "Sad")
+
+# Build it yourself
+
+If you want to build the game yourself or are just curious how it works feel free to checkout the repository.
+
+## Linux
+
+Build it with:
+
+	$ ./do build
+
+To build and run the game from the created jar-File use:
+
+	$ ./do jar
+
+[1]:http://ludumdare.com/compo/
+[2]:http://www.christian-schroedel.de/Slippy.jar
