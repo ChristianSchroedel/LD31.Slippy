@@ -1,6 +1,6 @@
 # Slippy - The hungry penguin
 
-Entry for [LudumDare 31] (my first LudumDare)
+Entry for [LudumDare 31][1] (my first LudumDare)
 
 Download the jar-File from here [Slippy][2].
 
@@ -42,5 +42,5 @@ To build and run the game from the created jar-File use:
 
 	$ ./do jar
 
-[1]:http://ludumdare.com/compo/
+[1]:http://ludumdare.com/compo/ludum-dare-31/?action=preview&uid=42361
 [2]:http://www.christian-schroedel.de/Slippy.jar
